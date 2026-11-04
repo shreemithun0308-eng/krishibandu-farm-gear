@@ -20,7 +20,7 @@ describe("listing rules", () => {
 describe("browse filtering", () => {
   it("sorts by price low to high", () => {
     const r = sortAndFilter(SAMPLE_LISTINGS, { q: "", category: "All", sort: "low", onlyAvailable: false });
-    expect(r[0].pricePerDay).toBe(400);
+    expect(r[0]?.pricePerDay).toBe(400);
   });
   it("filters by location", () => {
     const r = sortAndFilter(SAMPLE_LISTINGS, { q: "mandya", category: "All", sort: "rel", onlyAvailable: false });

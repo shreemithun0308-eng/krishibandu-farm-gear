@@ -21,7 +21,7 @@ export function validateBooking(f: BookingForm, today: Date) {
   if (!f.startDate) e.startDate = "errRequired";
   else {
     const t0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const [y, m, d] = f.startDate.split("-").map(Number);
+    const [y = 0, m = 1, d = 1] = f.startDate.split("-").map(Number);
     if (new Date(y, m - 1, d) < t0) e.startDate = "errDate";
   }
   const dur = Number(f.duration);
