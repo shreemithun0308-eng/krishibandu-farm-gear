@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { CheckCircle2, MapPin, User, X, ShieldAlert, ArrowLeft } from "lucide-react";
+import { CheckCircle2, MapPin, User, X, ShieldAlert, ArrowLeft, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { inr, makeBookingId, type Listing } from "@/lib/data";
 import { useLang, type TKey } from "@/lib/i18n";
