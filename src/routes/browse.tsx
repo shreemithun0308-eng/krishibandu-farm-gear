@@ -19,6 +19,8 @@ export const Route = createFileRoute("/browse")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Browse farm equipment — Krishibandu (demo)" },
       { name: "description", content: "Search and filter sample tractors, tillers, harvesters, sprayers and trailers for rent in Karnataka." },
       { property: "og:title", content: "Browse farm equipment — Krishibandu" },

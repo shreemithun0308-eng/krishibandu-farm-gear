@@ -10,6 +10,8 @@ import { ListingCard } from "@/components/ListingCard";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Krishibandu — Rent the right farm machine (demo)" },
       { name: "description", content: "Rent tractors, rotavators, harvesters and sprayers from nearby owners in Karnataka. Student demo with sample data." },
       { property: "og:title", content: "Krishibandu — Rent the right farm machine" },
