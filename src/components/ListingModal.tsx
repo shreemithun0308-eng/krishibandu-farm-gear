@@ -1,14 +1,15 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { CheckCircle2, MapPin, User, X, ShieldAlert, ArrowLeft } from "lucide-react";
+import { CheckCircle2, MapPin, User, X, ShieldAlert, ArrowLeft, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { inr, makeBookingId, type Listing } from "@/lib/data";
 import { useLang, type TKey } from "@/lib/i18n";
 import { useStore } from "@/lib/store";
-import { validateBooking, type BookingForm } from "@/lib/validation";
+import { validateBooking, whatsappLink, type BookingForm } from "@/lib/validation";
 import { Availability } from "./ListingCard";
 import { DemoBadge } from "./Layout";
+import { Button } from "@/components/ui/button";
 
 export function ListingModal() {
   const { listings, selectedId, openListing } = useStore();
@@ -42,6 +43,7 @@ export function ListingModal() {
 
 function Detail({ listing, onBook }: { listing: Listing; onBook: () => void }) {
   const { t, lang } = useLang();
+  const wa = whatsappLink(listing.phone, `Hi, I saw your ${listing.name} on Krishibandu. Is it available for rent?`);
   return (
     <div>
       <div className="relative aspect-[16/9]">
@@ -73,7 +75,18 @@ function Detail({ listing, onBook }: { listing: Listing; onBook: () => void }) {
         <div className="space-y-1.5 text-sm">
           <p className="flex items-center gap-2"><User className="h-4 w-4 text-primary" /> {t("owner")}: <strong>{listing.owner}</strong></p>
           <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> {listing.area}</p>
-          <p className="text-muted-foreground">{t("contact")}: {t("contactHidden")}</p>
+          {wa ? (
+            <div className="pt-1">
+              <Button asChild variant="outline" className="h-auto whitespace-normal rounded-full border-success text-success hover:bg-secondary hover:text-success">
+              <a href={wa} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" /> {t("whatsappOwner")}
+              </a>
+              </Button>
+              <p className="mt-1 text-xs text-muted-foreground">{t("whatsappNote")}</p>
+            </div>
+          ) : (
+            <p className="text-muted-foreground">{t("contact")}: {t("contactHidden")}</p>
+          )}
         </div>
         {!listing.available && <p className="rounded-xl bg-accent-soft p-3 text-sm">{t("unavailableNote")}</p>}
         <button onClick={onBook} className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground transition hover:bg-primary-deep">

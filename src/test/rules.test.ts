@@ -27,3 +27,10 @@ describe("browse filtering", () => {
     expect(r.map((l) => l.id)).toEqual(["kb-3"]);
   });
 });
+
+import { whatsappLink } from "@/lib/validation";
+describe("owner WhatsApp link", () => {
+  it("builds wa.me link with +91 from listing phone", () => expect(whatsappLink("98450 12345")).toBe("https://wa.me/919845012345"));
+  it("handles +91 prefix", () => expect(whatsappLink("+91-9845012345")).toBe("https://wa.me/919845012345"));
+  it("returns null without a valid phone", () => expect(whatsappLink(undefined)).toBeNull());
+});

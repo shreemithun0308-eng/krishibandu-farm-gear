@@ -11,6 +11,8 @@ import { DemoBadge } from "@/components/Layout";
 export const Route = createFileRoute("/list-equipment")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "List your equipment — Krishibandu (demo)" },
       { name: "description", content: "Add your tractor, tiller or other farm machine as a demo rental listing." },
       { property: "og:title", content: "List your equipment — Krishibandu" },

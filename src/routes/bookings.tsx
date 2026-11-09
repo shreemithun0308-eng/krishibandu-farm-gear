@@ -9,6 +9,8 @@ import { DemoBadge } from "@/components/Layout";
 export const Route = createFileRoute("/bookings")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "My bookings — Krishibandu (demo)" },
       { name: "description", content: "View and cancel your demo machinery booking requests saved on this device." },
       { property: "og:title", content: "My bookings — Krishibandu" },
