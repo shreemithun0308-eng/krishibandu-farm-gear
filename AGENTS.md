@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Build owner WhatsApp URLs through the shared phone-validation helper; invalid or missing numbers must never create outbound contact links.
+- The demo owner page uses the shared local store and only decides requests for user-added equipment; missing legacy booking status means pending, preserving existing saved requests.

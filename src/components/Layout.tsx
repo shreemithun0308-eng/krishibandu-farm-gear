@@ -52,6 +52,7 @@ export function Header() {
     { to: "/browse", label: t("navBrowse") },
     { to: "/bookings", label: t("navBookings"), count: bookings.length },
     { to: "/list-equipment", label: t("navList") },
+    { to: "/owner", label: t("navOwner") },
   ] as const;
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { SAMPLE_LISTINGS, type Listing } from "./data";
+import { decideBooking, type BookingStatus } from "./owner-bookings";
 
 export type Booking = {
   id: string;
@@ -16,6 +17,7 @@ export type Booking = {
   note: string;
   estimate: number;
   createdAt: string;
+  status?: BookingStatus;
 };
 
 type Ctx = {
@@ -26,6 +28,7 @@ type Ctx = {
   bookings: Booking[];
   addBooking: (b: Booking) => void;
   removeBooking: (id: string) => void;
+  decideRequest: (id: string, status: "confirmed" | "declined") => void;
   location: string;
   setLocation: (s: string) => void;
   selectedId: string | null;
@@ -72,6 +75,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         bookings,
         addBooking: (b) => setBookings((p) => [b, ...p]),
         removeBooking: (id) => setBookings((p) => p.filter((x) => x.id !== id)),
+        decideRequest: (id, status) => setBookings((p) => decideBooking(p, userListings, id, status)),
         location,
         setLocation: setLocationState,
         selectedId,
