@@ -46,6 +46,8 @@ const dict = {
   rate: { en: "Rental rate", kn: "ಬಾಡಿಗೆ ದರ" },
   contact: { en: "Owner contact", kn: "ಮಾಲೀಕರ ಸಂಪರ್ಕ" },
   contactHidden: { en: "Shared after the owner accepts (demo placeholder)", kn: "ಮಾಲೀಕರು ಒಪ್ಪಿದ ನಂತರ ಹಂಚಲಾಗುತ್ತದೆ (ಡೆಮೊ)" },
+  whatsappOwner: { en: "Chat with owner on WhatsApp", kn: "ಮಾಲೀಕರೊಂದಿಗೆ ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಮಾತನಾಡಿ" },
+  whatsappNote: { en: "Opens WhatsApp with the number entered when this machine was listed.", kn: "ಈ ಯಂತ್ರ ಸೇರಿಸುವಾಗ ನೀಡಿದ ಸಂಖ್ಯೆಗೆ ವಾಟ್ಸಾಪ್ ತೆರೆಯುತ್ತದೆ." },
   requestBooking: { en: "Request booking", kn: "ಬುಕಿಂಗ್ ವಿನಂತಿಸಿ" },
   unavailableNote: { en: "Currently booked — you can still send a demo request for later dates.", kn: "ಈಗ ಬುಕ್ ಆಗಿದೆ — ನಂತರದ ದಿನಾಂಕಗಳಿಗೆ ಡೆಮೊ ವಿನಂತಿ ಕಳುಹಿಸಬಹುದು." },
   close: { en: "Close", kn: "ಮುಚ್ಚಿ" },

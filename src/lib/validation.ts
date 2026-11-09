@@ -16,6 +16,14 @@ export function validatePhone(p: string) {
   return PHONE_RE.test(p.trim().replace(/\s/g, ""));
 }
 
+/** WhatsApp click-to-chat link for an Indian mobile number, or null if invalid. */
+export function whatsappLink(phone: string | undefined, message = "") {
+  if (!phone || !validatePhone(phone)) return null;
+  const digits = phone.replace(/\D/g, "").slice(-10);
+  const q = message ? `?text=${encodeURIComponent(message)}` : "";
+  return `https://wa.me/91${digits}${q}`;
+}
+
 export function validateBooking(f: BookingForm, today: Date) {
   const e: Partial<Record<keyof BookingForm, TKey>> = {};
   if (!f.startDate) e.startDate = "errRequired";
