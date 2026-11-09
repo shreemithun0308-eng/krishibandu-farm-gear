@@ -46,7 +46,7 @@ function Bookings() {
               <div className="flex flex-1 flex-col gap-2 p-4 sm:pl-0">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h2 className="font-display text-lg font-semibold">{lang === "kn" ? b.listingNameKn : b.listingName}</h2>
-                  <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold">{t("statusSent")}</span>
+                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${b.status === "confirmed" ? "bg-secondary text-success" : b.status === "declined" ? "bg-destructive/10 text-destructive" : "bg-accent-soft"}`}>{t(b.status === "confirmed" ? "statusConfirmed" : b.status === "declined" ? "statusDeclined" : "statusSent")}</span>
                 </div>
                 <p className="font-mono text-sm text-muted-foreground">{b.id}</p>
                 <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
