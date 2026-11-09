@@ -9,6 +9,7 @@ import { useStore } from "@/lib/store";
 import { validateBooking, whatsappLink, type BookingForm } from "@/lib/validation";
 import { Availability } from "./ListingCard";
 import { DemoBadge } from "./Layout";
+import { Button } from "@/components/ui/button";
 
 export function ListingModal() {
   const { listings, selectedId, openListing } = useStore();
@@ -76,9 +77,11 @@ function Detail({ listing, onBook }: { listing: Listing; onBook: () => void }) {
           <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> {listing.area}</p>
           {wa ? (
             <div className="pt-1">
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-success px-4 py-2 font-semibold text-success transition hover:bg-secondary">
+              <Button asChild variant="outline" className="h-auto whitespace-normal rounded-full border-success text-success hover:bg-secondary hover:text-success">
+              <a href={wa} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" /> {t("whatsappOwner")}
               </a>
+              </Button>
               <p className="mt-1 text-xs text-muted-foreground">{t("whatsappNote")}</p>
             </div>
           ) : (
