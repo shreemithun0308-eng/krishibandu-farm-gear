@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookingsRouteImport } from './routes/bookings'
 import { Route as BrowseRouteImport } from './routes/browse'
 import { Route as ListEquipmentRouteImport } from './routes/list-equipment'
+import { Route as OwnerRouteImport } from './routes/owner'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const ListEquipmentRoute = ListEquipmentRouteImport.update({
   path: '/list-equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OwnerRoute = OwnerRouteImport.update({
+  id: '/owner',
+  path: '/owner',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bookings': typeof BookingsRoute
   '/browse': typeof BrowseRoute
   '/list-equipment': typeof ListEquipmentRoute
+  '/owner': typeof OwnerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bookings': typeof BookingsRoute
   '/browse': typeof BrowseRoute
   '/list-equipment': typeof ListEquipmentRoute
+  '/owner': typeof OwnerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/bookings': typeof BookingsRoute
   '/browse': typeof BrowseRoute
   '/list-equipment': typeof ListEquipmentRoute
+  '/owner': typeof OwnerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bookings' | '/browse' | '/list-equipment'
+  fullPaths: '/' | '/bookings' | '/browse' | '/list-equipment' | '/owner'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bookings' | '/browse' | '/list-equipment'
-  id: '__root__' | '/' | '/bookings' | '/browse' | '/list-equipment'
+  to: '/' | '/bookings' | '/browse' | '/list-equipment' | '/owner'
+  id: '__root__' | '/' | '/bookings' | '/browse' | '/list-equipment' | '/owner'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   BookingsRoute: typeof BookingsRoute
   BrowseRoute: typeof BrowseRoute
   ListEquipmentRoute: typeof ListEquipmentRoute
+  OwnerRoute: typeof OwnerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListEquipmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/owner': {
+      id: '/owner'
+      path: '/owner'
+      fullPath: '/owner'
+      preLoaderRoute: typeof OwnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookingsRoute: BookingsRoute,
   BrowseRoute: BrowseRoute,
   ListEquipmentRoute: ListEquipmentRoute,
+  OwnerRoute: OwnerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
